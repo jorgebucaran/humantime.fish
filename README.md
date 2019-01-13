@@ -1,5 +1,7 @@
 # fish-humanize-duration
 
+Make a time interval human readable.
+
 ## Installation
 
 With [Fisher](https://github.com/jorgebucaran/fisher)
