@@ -1,6 +1,6 @@
 # fish-humanize-duration
 
-Make a time interval human readable.
+A [fish shell](https://fishshell.com) package to make a time interval human readable. 
 
 ## Installation
 
