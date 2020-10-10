@@ -5,7 +5,7 @@ function humanize_duration -d "Make a time interval human readable"
     end
     set hours (math --scale=0 $argv/\(3600 \*1000\))
     set mins (math --scale=0 $argv/\(60 \*1000\) % 60)
-    set secs (math --scale=0 $argv % 1000)
+    set secs (math --scale=0 $argv/1000 % 60)
     if test $hours -gt 0
         set --append output $hours"h"
     end
