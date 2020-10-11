@@ -1,19 +1,23 @@
 function humanize_duration -d "Make a time interval human readable"
-    command awk '
-        function hmTime(time,   stamp) {
-            split("h:m:s:ms", units, ":")
-            for (i = 2; i >= -1; i--) {
-                if (t = int( i < 0 ? time % 1000 : time / (60 ^ i * 1000) % 60 )) {
-                    stamp = stamp t units[sqrt((i - 2) ^ 2) + 1] " "
-                }
-            }
-            if (stamp ~ /^ *$/) {
-                return "0ms"
-            }
-            return substr(stamp, 1, length(stamp) - 1)
-        }
-        { 
-            print hmTime($0) 
-        }
-    '
+    if not string length --quiet $argv
+         set --erase argv
+         read --line argv
+    end
+    set hours (math --scale=0 $argv/\(3600 \*1000\))
+    set mins (math --scale=0 $argv/\(60 \*1000\) % 60)
+    set secs (math --scale=0 $argv/1000 % 60)
+    if test $hours -gt 0
+        set --append output $hours"h"
+    end
+    if test $mins -gt 0
+        set --append output $mins"m"
+    end
+    if test $secs -gt 0
+        set --append output $secs"s"
+    end
+    if not set --query output
+        echo $argv"ms"
+    else
+        echo $output
+    end
 end
