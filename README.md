@@ -5,8 +5,8 @@
 You have the time in milliseconds and want to turn it into a human-readable string like "3h 14m 15s".
 
 ```fish
-sleep 1
-humantime $CMD_DURATION
+$ sleep 1
+$ humantime $CMD_DURATION
 1s 5ms
 ```
 
