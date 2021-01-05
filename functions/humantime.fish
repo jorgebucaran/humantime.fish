@@ -1,4 +1,4 @@
-function humantime -a ms -d "Turn milliseconds into a human-readable string"
+function humantime --argument-names ms --description "Turn milliseconds into a human-readable string"
     set --query ms[1] || return
 
     set --local secs (math --scale=1 $ms/1000 % 60)
