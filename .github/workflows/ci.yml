@@ -17,6 +17,6 @@ jobs:
       - name: Install Tools
         run: |
           curl -sL https://git.io/fisher | source
-          fisher install $GITHUB_WORKSPACE
-          test (humantime 11655400) = "3h 14m 15s"
+          fisher install jorgebucaran/fishtape $GITHUB_WORKSPACE
+          fishtape tests/*.fish
         shell: fish {0}
